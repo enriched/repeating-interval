@@ -1,4 +1,6 @@
 # repeating-interval
+[![Build Status](https://travis-ci.org/enriched/repeating-interval.svg?branch=master)](https://travis-ci.org/enriched/repeating-interval)
+
 A simple library for parsing and interpreting ISO 8601 repeating time intervals.
 
 The library also has the ability to handle non repeating intervals.
