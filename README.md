@@ -28,8 +28,4 @@ eg. `R/P1D/2016-08-23T04:00:00Z` would occur every day before the 23rd of August
 
 Further reading on ISO 8601 intervals can be found on [Wikipedia](https://en.wikipedia.org/wiki/ISO_8601)
 
-# API
-
-## `class Interval`
-
-### `constructor(interval: string, )`
+# [DOCUMENTATION](https://rawgit.com/enriched/repeating-interval/master/doc/classes/_interval_.interval.html)
