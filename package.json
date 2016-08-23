@@ -10,7 +10,7 @@
     "typescript": "^1.8.10"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node test/runTests.js",
     "build": "tsc -p src/tsconfig.json"
   },
   "repository": {
