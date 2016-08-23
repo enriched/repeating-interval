@@ -10,7 +10,9 @@ The library also has the ability to handle non repeating intervals.
 
 ## Usage
 ```
-var ri = require('repeating-interval');
+import {Interval} from 'repeating-interval';
+
+let interval = new Interval('R/2016-08-23T04:00:00Z/P1D');
 ```
 
 ## Examples of ISO 8601 repeating intervals
@@ -25,3 +27,9 @@ eg. `R/P1D/2016-08-23T04:00:00Z` would occur every day before the 23rd of August
 4am UTC on the 23rd of August.
 
 Further reading on ISO 8601 intervals can be found on [Wikipedia](https://en.wikipedia.org/wiki/ISO_8601)
+
+# API
+
+## `class Interval`
+
+### `constructor(interval: string, )`

@@ -11,7 +11,8 @@
   },
   "scripts": {
     "test": "node test/runTests.js",
-    "build": "tsc -p src/tsconfig.json"
+    "build": "tsc -p src/tsconfig.json",
+    "doc": "typedoc --target es5 --module commonjs --mode modules --out ./doc/ ./src/interval.ts"
   },
   "repository": {
     "type": "git",
