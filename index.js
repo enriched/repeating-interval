@@ -1,6 +1,6 @@
 "use strict";
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
-__export(require('./interval'));
+var interval_1 = require('./interval');
+exports.Interval = interval_1.Interval;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = interval_1.Interval;
 //# sourceMappingURL=index.js.map

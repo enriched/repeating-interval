@@ -28,7 +28,7 @@ export declare class Interval {
      */
     end: moment.Moment;
     /**
-     * The duration of the interval
+     * The duration of a single repition of the interval
      */
     duration: moment.Duration;
     /**

@@ -220,7 +220,7 @@ var Interval = (function () {
     });
     Object.defineProperty(Interval.prototype, "duration", {
         /**
-         * The duration of the interval
+         * The duration of a single repition of the interval
          */
         get: function () {
             if (this._duration) {
