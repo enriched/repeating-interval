@@ -1,0 +1,32 @@
+{
+  "name": "repeating-interval",
+  "version": "1.0.0",
+  "description": "IS0 8601 repeating interval parsing and manipulation",
+  "main": "index.js",
+  "dependencies": {
+    "moment": "^2.14.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -p src/tsconfig.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enriched/repeating-interval.git"
+  },
+  "keywords": [
+    "ISO8601",
+    "repeating",
+    "interval",
+    "moment",
+    "recurring",
+    "duration"
+  ],
+  "author": "Rich Adams",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/enriched/repeating-interval/issues"
+  },
+  "homepage": "https://github.com/enriched/repeating-interval#readme"
+}
