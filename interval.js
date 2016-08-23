@@ -328,7 +328,11 @@ var Interval = (function () {
     };
     /**
      * Get a list of the occurrences for an interval,
-     * if no parameters are supplied then all occurrences are returned
+     * if no parameters are supplied then all occurrences are returned.
+     *
+     * @param {number} [from] the starting occurrence index
+     * @param {number} [to] the ending occurrence index
+     * @returns {moment.Moment[]}
      */
     Interval.prototype.slice = function (from, to) {
         // Check for being out of bounds
