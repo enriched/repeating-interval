@@ -35,22 +35,22 @@ export declare class Interval {
      * True if the schedule is infintely long
      * @returns {boolean}
      */
-    infinite: boolean;
+    isInfinite: boolean;
     /**
      * True if the schedule progresses infinitely in the positive
      * @returns {boolean}
      */
-    infinitePositive: boolean;
+    isInfinitePositive: boolean;
     /**
      * True if the schedule progresses infinitely in the negative
      * @returns {boolean}
      */
-    infiniteNegative: boolean;
+    isInfiniteNegative: boolean;
     /**
      * The recurrence in milliseconds, 0 means that there is only one occurrence
      * @returns {number}
      */
-    recurs: boolean;
+    isRepeating: boolean;
     /**
      * The number of repetitions
      * @returns {number}

@@ -122,7 +122,7 @@ export class Interval {
    * Returns an invalid moment if there are infinite negative repetitions
    */
   get start(): moment.Moment {
-    if (this.infiniteNegative) {
+    if (this.isInfiniteNegative) {
       return moment.invalid();
     } else {
       return this.occurrence(this.first);
@@ -135,7 +135,7 @@ export class Interval {
    * Returns an invalid moment if there are infinite positive repetitions
    */
   get end(): moment.Moment {
-    if (this.infinitePositive) {
+    if (this.isInfinitePositive) {
       return moment.invalid();
     } else {
       return this.occurrence(this.last);
@@ -160,7 +160,7 @@ export class Interval {
    * True if the schedule is infintely long
    * @returns {boolean}
    */
-  get infinite(): boolean {
+  get isInfinite(): boolean {
     return !isFinite(this._repetitions) || this._infiniteSpan;
   }
 
@@ -168,7 +168,7 @@ export class Interval {
    * True if the schedule progresses infinitely in the positive
    * @returns {boolean}
    */
-  get infinitePositive(): boolean {
+  get isInfinitePositive(): boolean {
     return !isFinite(this.last) || (this._infiniteSpan && !this._end);
   }
 
@@ -176,7 +176,7 @@ export class Interval {
    * True if the schedule progresses infinitely in the negative
    * @returns {boolean}
    */
-  get infiniteNegative(): boolean {
+  get isInfiniteNegative(): boolean {
     return !isFinite(this.first) || (this._infiniteSpan && !this._start);
   }
 
@@ -184,7 +184,7 @@ export class Interval {
    * The recurrence in milliseconds, 0 means that there is only one occurrence
    * @returns {number}
    */
-  get recurs(): boolean {
+  get isRepeating(): boolean {
     return this._recurs;
   }
 
@@ -225,14 +225,14 @@ export class Interval {
 
     if (typeof interval === 'string') {
       // Parse out the ISO 8601 string
-      var split = interval.split('/');
+      let split = interval.split('/');
       if (split.length > 3) {
         throw new Error(`Invalid ISO 8601 string[${interval}]`);
       }
 
-      for (var i = 0; i < split.length; i++) {
-        let string = split[i];
-        let parsed = parse8601String(string);
+      for (let i = 0; i < split.length; i++) {
+        let fragment = split[i];
+        let parsed = parse8601String(fragment);
 
         switch (parsed.type) {
 
@@ -323,7 +323,7 @@ export class Interval {
     if (idx > this.last || idx < this.first) {
       return moment.invalid();
     }
-    if (this.infiniteNegative) {
+    if (this.isInfiniteNegative) {
       return moment(this._end).subtract(this.durationBetween(idx, this.last));
     } else {
       return moment(this._start).add(this.durationBetween(this.first, idx));
@@ -341,7 +341,7 @@ export class Interval {
     }
 
     if (from == null) {
-      if (this.infiniteNegative) {
+      if (this.isInfiniteNegative) {
         throw new Error(`Tried to get all occurrences with no lower bound[${this.toISOString()}]`);
       }
       from = this.first;
@@ -350,7 +350,7 @@ export class Interval {
     }
 
     if (to == null) {
-      if (this.infinitePositive) {
+      if (this.isInfinitePositive) {
         throw new Error(`Tried to get all occurrences with no upper bound[${this.toISOString()}]`);
       }
       to = this.last;
@@ -361,7 +361,7 @@ export class Interval {
     let count = to - from + 1;
     let initialDuration = this.durationBetween(from, to);
     let currentOccurrence;
-    if (this.infiniteNegative) {
+    if (this.isInfiniteNegative) {
       currentOccurrence = moment(this._end).subtract(initialDuration);
     } else {
       currentOccurrence = moment(this._start).add(initialDuration);

@@ -100,8 +100,8 @@ var Interval = (function () {
                 throw new Error("Invalid ISO 8601 string[" + interval + "]");
             }
             for (var i = 0; i < split.length; i++) {
-                var string = split[i];
-                var parsed = parse8601String(string);
+                var fragment = split[i];
+                var parsed = parse8601String(fragment);
                 switch (parsed.type) {
                     case String8601Type.repeating:
                         if (i !== 0) {
@@ -191,7 +191,7 @@ var Interval = (function () {
          * Returns an invalid moment if there are infinite negative repetitions
          */
         get: function () {
-            if (this.infiniteNegative) {
+            if (this.isInfiniteNegative) {
                 return moment.invalid();
             }
             else {
@@ -208,7 +208,7 @@ var Interval = (function () {
          * Returns an invalid moment if there are infinite positive repetitions
          */
         get: function () {
-            if (this.infinitePositive) {
+            if (this.isInfinitePositive) {
                 return moment.invalid();
             }
             else {
@@ -236,7 +236,7 @@ var Interval = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(Interval.prototype, "infinite", {
+    Object.defineProperty(Interval.prototype, "isInfinite", {
         /**
          * True if the schedule is infintely long
          * @returns {boolean}
@@ -247,7 +247,7 @@ var Interval = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(Interval.prototype, "infinitePositive", {
+    Object.defineProperty(Interval.prototype, "isInfinitePositive", {
         /**
          * True if the schedule progresses infinitely in the positive
          * @returns {boolean}
@@ -258,7 +258,7 @@ var Interval = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(Interval.prototype, "infiniteNegative", {
+    Object.defineProperty(Interval.prototype, "isInfiniteNegative", {
         /**
          * True if the schedule progresses infinitely in the negative
          * @returns {boolean}
@@ -269,7 +269,7 @@ var Interval = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(Interval.prototype, "recurs", {
+    Object.defineProperty(Interval.prototype, "isRepeating", {
         /**
          * The recurrence in milliseconds, 0 means that there is only one occurrence
          * @returns {number}
@@ -319,7 +319,7 @@ var Interval = (function () {
         if (idx > this.last || idx < this.first) {
             return moment.invalid();
         }
-        if (this.infiniteNegative) {
+        if (this.isInfiniteNegative) {
             return moment(this._end).subtract(this.durationBetween(idx, this.last));
         }
         else {
@@ -336,7 +336,7 @@ var Interval = (function () {
             return [];
         }
         if (from == null) {
-            if (this.infiniteNegative) {
+            if (this.isInfiniteNegative) {
                 throw new Error("Tried to get all occurrences with no lower bound[" + this.toISOString() + "]");
             }
             from = this.first;
@@ -345,7 +345,7 @@ var Interval = (function () {
             from = this.first;
         }
         if (to == null) {
-            if (this.infinitePositive) {
+            if (this.isInfinitePositive) {
                 throw new Error("Tried to get all occurrences with no upper bound[" + this.toISOString() + "]");
             }
             to = this.last;
@@ -356,7 +356,7 @@ var Interval = (function () {
         var count = to - from + 1;
         var initialDuration = this.durationBetween(from, to);
         var currentOccurrence;
-        if (this.infiniteNegative) {
+        if (this.isInfiniteNegative) {
             currentOccurrence = moment(this._end).subtract(initialDuration);
         }
         else {
