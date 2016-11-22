@@ -1,6 +1,6 @@
 {
   "name": "repeating-interval",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "IS0 8601 repeating interval parsing and manipulation",
   "main": "index.js",
   "dependencies": {
