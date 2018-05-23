@@ -413,8 +413,8 @@ export class Interval {
   }
 
   static extents(intervalList: Interval[]): Interval {
-    let start = moment.min(intervalList.map(s => s.start) as any);
-    let end = moment.max(intervalList.map(s => s.end) as any);
+    let start = moment.min(intervalList.map(s => s.start));
+    let end = moment.max(intervalList.map(s => s.end));
     return new Interval(`${start.isValid() ? start.toISOString() : ''}/${end.isValid() ? end.toISOString() : ''}`);
   }
 

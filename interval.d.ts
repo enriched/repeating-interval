@@ -47,8 +47,8 @@ export declare class Interval {
      */
     isInfiniteNegative: boolean;
     /**
-     * The recurrence in milliseconds, 0 means that there is only one occurrence
-     * @returns {number}
+     * True if the schedule repeats (has more than one occurrence)
+     * @returns {boolean}
      */
     isRepeating: boolean;
     /**
