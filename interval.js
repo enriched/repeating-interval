@@ -271,8 +271,8 @@ var Interval = (function () {
     });
     Object.defineProperty(Interval.prototype, "isRepeating", {
         /**
-         * The recurrence in milliseconds, 0 means that there is only one occurrence
-         * @returns {number}
+         * True if the schedule repeats (has more than one occurrence)
+         * @returns {boolean}
          */
         get: function () {
             return this._recurs;

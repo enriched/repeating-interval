@@ -1,10 +1,10 @@
 {
   "name": "repeating-interval",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "IS0 8601 repeating interval parsing and manipulation",
   "main": "index.js",
   "dependencies": {
-    "moment": "^2.21.0"
+    "moment": "^2.22.1"
   },
   "devDependencies": {
     "typescript": "^1.8.10"
